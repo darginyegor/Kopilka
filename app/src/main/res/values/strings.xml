@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name">Kopilka</string>
+    <string name="app_name">Копилка</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="title_activity_goal">Цели</string>
+    <string name="title_activity_add_goal">Добавить цель</string>
 </resources>

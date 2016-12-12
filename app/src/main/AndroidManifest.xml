@@ -18,6 +18,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".GoalActivity"
+            android:label="@string/title_activity_goal"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".AddGoalActivity"
+            android:label="@string/title_activity_add_goal" />
+        <activity
+            android:name=".IncreaseSumActivity"
+            android:theme="@android:style/Theme.Material.Light.Dialog" />
     </application>
 
 </manifest>
