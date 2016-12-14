@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public int coins,value;
-    public static final String APP_PREFERENCES = "mysettings";
-    public static final Integer APP_PREFERENCES_MONEY = -1;
+    public static final String APP_PREFERENCES_MAIN = "mysettings";
+    public static final Integer APP_PREFERENCES_MONEY_MAIN = -1;
     SharedPreferences mSettings;
 
     @Override
@@ -32,10 +32,10 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        mSettings = getSharedPreferences(APP_PREFERENCES_MAIN, Context.MODE_PRIVATE);
         TextView textView = (TextView) findViewById(R.id.balance);
-        if (mSettings.contains(String.valueOf(APP_PREFERENCES_MONEY))) {
-        textView.setText(mSettings.getInt(String.valueOf(APP_PREFERENCES_MONEY),-1)+" p.");}
+        if (mSettings.contains(String.valueOf(APP_PREFERENCES_MONEY_MAIN))) {
+        textView.setText(mSettings.getInt(String.valueOf(APP_PREFERENCES_MONEY_MAIN),-1)+" p.");}
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -118,12 +118,12 @@ public class MainActivity extends AppCompatActivity
     {
         if (resultCode==1)
         {
-            value = ((mSettings.getInt(String.valueOf(APP_PREFERENCES_MONEY), -1)));
+            value = ((mSettings.getInt(String.valueOf(APP_PREFERENCES_MONEY_MAIN), -1)));
             coins = coins + value;
             TextView textView = (TextView) findViewById(R.id.balance);
             textView.setText(Integer.toString(coins) + " р.");
             SharedPreferences.Editor editor = mSettings.edit();
-            editor.putInt(String.valueOf(APP_PREFERENCES_MONEY), coins);
+            editor.putInt(String.valueOf(APP_PREFERENCES_MONEY_MAIN), coins);
             editor.apply();
         }
         {
