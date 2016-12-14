@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity
 
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         TextView textView = (TextView) findViewById(R.id.balance);
-        if mSettings.contains(String.valueOf(APP_PREFERENCES_MONEY)){
+        if (mSettings.contains(String.valueOf(APP_PREFERENCES_MONEY))) {
         textView.setText(mSettings.getInt(String.valueOf(APP_PREFERENCES_MONEY),-1)+" p.");}
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
