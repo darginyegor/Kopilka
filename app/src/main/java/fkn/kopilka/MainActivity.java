@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     public int coins,value;
+
     public static final String APP_PREFERENCES = "mysettings";
     public static final String APP_PREFERENCES_MONEY = "cena";
     SharedPreferences mSettings;
@@ -34,10 +35,12 @@ public class MainActivity extends AppCompatActivity
 
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         TextView textView = (TextView) findViewById(R.id.balance);
+
         if (mSettings.contains(APP_PREFERENCES_MONEY)) {
             textView.setText(mSettings.getString(APP_PREFERENCES_MONEY," ")+" p.");
         }
         coins = Integer.valueOf(mSettings.getString(APP_PREFERENCES_MONEY, " "));
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -123,13 +126,17 @@ public class MainActivity extends AppCompatActivity
         if (resultCode==1)
         {
 
+
             value = Integer.valueOf((mSettings.getString(APP_PREFERENCES_MONEY," ")));
+
             coins = coins + value;
             TextView textView = (TextView) findViewById(R.id.balance);
             textView.setText(Integer.toString(coins) + " р.");
             SharedPreferences.Editor editor = mSettings.edit();
+
             String x = Integer.toString(coins);
             editor.putString(APP_PREFERENCES_MONEY, x);
+
             editor.apply();
         }
     }

@@ -10,8 +10,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class IncreaseSumActivity extends Activity {
+
     public static final String APP_PREFERENCES = "mysettings";
     public static final String APP_PREFERENCES_MONEY = "cena";
+
     SharedPreferences mSettings;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class IncreaseSumActivity extends Activity {
         SharedPreferences.Editor ed = mSettings.edit();
         String x = Integer.toString(value);
         ed.putString(APP_PREFERENCES_MONEY, x);
+
         ed.apply();
         setResult(1);
         finish();

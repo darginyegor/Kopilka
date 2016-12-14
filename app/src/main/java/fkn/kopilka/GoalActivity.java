@@ -12,11 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,10 +45,12 @@ public class GoalActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         mGoals = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         //Goals= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        lvGoal = (ListView)findViewById(R.id.goal_list);
-        mGoallist=new ArrayList<>();
-
+        lvGoal = (ListView) findViewById(R.id.goal_list);
+        mGoallist = new ArrayList<>();
+        ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar4);
+        //pb.setProgress();
     }
+
     protected void add_goal(View v){
         Intent intent = new Intent(this,AddGoalActivity.class);
         startActivityForResult(intent,1);
@@ -57,7 +62,6 @@ public class GoalActivity extends AppCompatActivity {
             money = mGoals.getInt(String.valueOf(APP_PREFERENCES_GMONEY), -1);
             id = mGoals.getInt(String.valueOf(APP_PREFERENCES_ID), id);
             mGoallist.add(new Goal(id, name, money, description));
-            String jsonStr = new Gson().toJson(mGoallist);
             adapter = new GoalAdapter(mGoallist, getApplicationContext());
             lvGoal.setAdapter(adapter);
         }

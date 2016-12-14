@@ -13,6 +13,7 @@ import java.util.List;
 public class GoalAdapter extends BaseAdapter {
     private Context mContext;
     private List<Goal> mGoalList;
+    private String[] values;
 
     public GoalAdapter(List<Goal> mGoalList, Context mContext) {
         this.mGoalList = (List<Goal>) mGoalList;
@@ -34,7 +35,6 @@ public class GoalAdapter extends BaseAdapter {
         return position;
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = View.inflate(mContext,R.layout.goal_info,null);
@@ -48,5 +48,9 @@ public class GoalAdapter extends BaseAdapter {
 
         v.setTag(mGoalList.get(position).getId());
         return v;
+    }
+
+    public String[] getValues() {
+        return values;
     }
 }
