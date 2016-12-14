@@ -19,5 +19,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/goal_list" />
+        android:id="@+id/goal_list"
+        android:headerDividersEnabled="false"
+        style="@style/Widget.AppCompat.ListView.DropDown" />
 </RelativeLayout>

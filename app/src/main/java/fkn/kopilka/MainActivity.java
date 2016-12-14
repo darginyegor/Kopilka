@@ -17,13 +17,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    public int coins;
+    public int coins,value;
     public static final String APP_PREFERENCES = "mysettings";
-    public static final String APP_PREFERENCES_MONEY = "Money";
+    public static final Integer APP_PREFERENCES_MONEY = -1;
     SharedPreferences mSettings;
 
     @Override
@@ -33,21 +34,11 @@ public class MainActivity extends AppCompatActivity
 
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         TextView textView = (TextView) findViewById(R.id.balance);
-
-        if(mSettings.contains(APP_PREFERENCES_MONEY)) {
-            textView.setText(mSettings.getString(APP_PREFERENCES_MONEY, "")+" p.");
-        }
+        if mSettings.contains(String.valueOf(APP_PREFERENCES_MONEY)){
+        textView.setText(mSettings.getInt(String.valueOf(APP_PREFERENCES_MONEY),-1)+" p.");}
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                Intent intent = new Intent( ,IncreaseSumActivity.class);
-////                startActivityForResult(intent,1);
-//            }
-//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -117,22 +108,27 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        Log.d("myLogs", "requestCode = " + requestCode);//pishet in log
-        String a = null;
-        coins = Integer.valueOf(mSettings.getString(APP_PREFERENCES_MONEY, a));
-        coins=coins+resultCode;
-        String x = Integer.toString(coins);
-        TextView textView = (TextView) findViewById(R.id.balance);
-        textView.setText(x + " р.");
-        SharedPreferences.Editor editor = mSettings.edit();
-        editor.putString(APP_PREFERENCES_MONEY, x);
-        editor.apply();
-    }
-
     public void add (View v)
     {
         Intent intent = new Intent(this,IncreaseSumActivity.class);
         startActivityForResult(intent,1);
     }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (resultCode==1)
+        {
+            value = ((mSettings.getInt(String.valueOf(APP_PREFERENCES_MONEY), -1)));
+            coins = coins + value;
+            TextView textView = (TextView) findViewById(R.id.balance);
+            textView.setText(Integer.toString(coins) + " р.");
+            SharedPreferences.Editor editor = mSettings.edit();
+            editor.putInt(String.valueOf(APP_PREFERENCES_MONEY), coins);
+            editor.apply();
+        }
+        {
+
+        }
+    }
+
 }

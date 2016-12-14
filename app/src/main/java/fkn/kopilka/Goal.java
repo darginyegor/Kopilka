@@ -5,6 +5,7 @@ class Goal {
     private Integer id;
     private String name,description;
     private Integer money;
+    private int date;
 
     public Goal(Integer id, String name, Integer money, String description) {
         this.id = id;
@@ -43,5 +44,9 @@ class Goal {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getDate() {
+        return date;
     }
 }

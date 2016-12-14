@@ -22,17 +22,6 @@
         android:hint="Сумма пополнения" />
 
     <Button
-        android:text="Пополнить"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button3"
-        android:layout_alignBaseline="@+id/button"
-        android:layout_alignBottom="@+id/button"
-        android:layout_toEndOf="@+id/button"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-        android:onClick="enter" />
-
-    <Button
         android:text="Отмена"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,4 +30,14 @@
         android:layout_below="@+id/value"
         android:layout_alignParentStart="true"
         android:onClick="exit" />
+
+    <Button
+        android:text="Пополнить"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:onClick="enter"
+        android:layout_below="@+id/value"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

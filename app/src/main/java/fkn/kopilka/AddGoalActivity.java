@@ -16,13 +16,14 @@ public class AddGoalActivity extends AppCompatActivity {
     public static final String APP_PREFERENCES_NAME = "Name";
     public static final String APP_PREFERENCES = "MyGoals";
     public static final Integer APP_PREFERENCES_ID = -1;
-    public static final Integer APP_PREFERENCES_MONEY = -1;
+    public static final Integer APP_PREFERENCES_DATE = -1;
+    public static final Integer APP_PREFERENCES_GMONEY = -1;
     public static final String APP_PREFERENCES_DESC = "Description";
     private ListView lvGoal;
     private GoalAdapter adapter;
     private List<Goal> mGoallist;
     String name,description;
-    Integer money=0;
+    Integer money,date=0;
     Integer id=1;
     SharedPreferences mGoals;
 
@@ -41,6 +42,8 @@ public class AddGoalActivity extends AppCompatActivity {
         money = Integer.parseInt(emoney.getText().toString());
         EditText edesc = (EditText) findViewById(R.id.edescription);
         description=edesc.getText().toString();
+        //EditText edate = (EditText) findViewById(R.id.edata);
+        //date = Integer.valueOf(edate.getText().toString());
         mGoals= getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         SharedPreferences.Editor ed = mGoals.edit();
 
@@ -49,14 +52,20 @@ public class AddGoalActivity extends AppCompatActivity {
             mGoals.getInt(String.valueOf(APP_PREFERENCES_ID),id);
             ed.putString(APP_PREFERENCES_NAME,name);
             ed.putString(APP_PREFERENCES_DESC,description);
-            ed.putInt(String.valueOf(APP_PREFERENCES_MONEY),money);
+            ed.putInt(String.valueOf(APP_PREFERENCES_GMONEY),money);
+            //ed.putInt(String.valueOf(APP_PREFERENCES_DATE),date);
             ed.apply();
             Toast.makeText(this,"Goal Added \n"+id+" " +name +" "+money+" "+description, Toast.LENGTH_SHORT).show();
             id=id+1;
             ed.putInt(String.valueOf(APP_PREFERENCES_ID),id);
+            ed.clear();
+            setResult(1);
+            finish();
         }
-        finish();
     }
-
+    public void onBackPressed()
+    {
+            super.onBackPressed();
+    }
 
 }

@@ -43,8 +43,8 @@ public class GoalAdapter extends BaseAdapter {
         TextView goalDate=(TextView)v.findViewById(R.id.goalDate);
 
         goalName.setText(mGoalList.get(position).getName());
-        goalMoney.setText(String.valueOf(mGoalList.get(position).getMoney())+" Рублей ");
-        //goalDate.setText(mGoalList.get(position).getDate());
+        goalMoney.setText(String.valueOf(mGoalList.get(position).getMoney())+" p. ");
+//        goalDate.setText(mGoalList.get(position).getDate());
 
         v.setTag(mGoalList.get(position).getId());
         return v;
