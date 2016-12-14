@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Kopilka.iml" filepath="$PROJECT_DIR$/Kopilka.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Kopilka-master.iml" filepath="$PROJECT_DIR$/Kopilka-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

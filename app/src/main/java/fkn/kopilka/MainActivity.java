@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity
 
     public int coins,value;
     public static final String APP_PREFERENCES = "mysettings";
-    public static final Integer APP_PREFERENCES_MONEY = -1;
+    public static final String APP_PREFERENCES_MONEY = "cena";
     SharedPreferences mSettings;
 
     @Override
@@ -34,8 +34,10 @@ public class MainActivity extends AppCompatActivity
 
         mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         TextView textView = (TextView) findViewById(R.id.balance);
-        if (mSettings.contains(String.valueOf(APP_PREFERENCES_MONEY))) {
-        textView.setText(mSettings.getInt(String.valueOf(APP_PREFERENCES_MONEY),-1)+" p.");}
+        if (mSettings.contains(APP_PREFERENCES_MONEY)) {
+            textView.setText(mSettings.getString(APP_PREFERENCES_MONEY," ")+" p.");
+        }
+        coins = Integer.valueOf(mSettings.getString(APP_PREFERENCES_MONEY, " "));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -116,18 +118,19 @@ public class MainActivity extends AppCompatActivity
 
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
+        Log.d("myLogs", "requestCode = " + APP_PREFERENCES_MONEY+"        "+coins);//pishet in log
+
         if (resultCode==1)
         {
-            value = ((mSettings.getInt(String.valueOf(APP_PREFERENCES_MONEY), -1)));
+
+            value = Integer.valueOf((mSettings.getString(APP_PREFERENCES_MONEY," ")));
             coins = coins + value;
             TextView textView = (TextView) findViewById(R.id.balance);
             textView.setText(Integer.toString(coins) + " р.");
             SharedPreferences.Editor editor = mSettings.edit();
-            editor.putInt(String.valueOf(APP_PREFERENCES_MONEY), coins);
+            String x = Integer.toString(coins);
+            editor.putString(APP_PREFERENCES_MONEY, x);
             editor.apply();
-        }
-        {
-
         }
     }
 
