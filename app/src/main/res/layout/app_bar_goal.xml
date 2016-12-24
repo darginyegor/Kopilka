@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include layout="@layout/content_goal" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
@@ -30,14 +30,8 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_menu_add"
-        android:onClick="add"
+        android:onClick="add_goal"
         app:fabSize="normal"
         app:elevation="5dp" />
-
-    <include layout="@layout/content_goal"
-        android:layout_width="wrap_content"
-        android:layout_height="390dp"
-        android:layout_gravity="bottom"/>
-
 
 </android.support.design.widget.CoordinatorLayout>
