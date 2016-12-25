@@ -55,7 +55,7 @@ public class AddGoalActivity extends AppCompatActivity {
             ed.putInt(String.valueOf(APP_PREFERENCES_GMONEY),money);
             //ed.putInt(String.valueOf(APP_PREFERENCES_DATE),date);
             ed.apply();
-            Toast.makeText(this,"Goal Added \n"+id+" " +name +" "+money+" "+description, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Цель добавлена \n"+id+" " +name +" "+money+" "+description, Toast.LENGTH_SHORT).show();
             id=id+1;
             ed.putInt(String.valueOf(APP_PREFERENCES_ID),id);
             ed.clear();

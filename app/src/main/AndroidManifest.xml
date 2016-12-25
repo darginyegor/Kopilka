@@ -34,6 +34,10 @@
         <activity
             android:name=".IncreaseSumActivity"
             android:theme="@android:style/Theme.Material.Light.Dialog" />
+        <activity
+            android:name=".StatisticsActivity"
+            android:label="@string/title_activity_statistics"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

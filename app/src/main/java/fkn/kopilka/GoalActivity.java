@@ -91,6 +91,10 @@ public class GoalActivity extends AppCompatActivity
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
+        if (id == R.id.nav_stats) {
+            Intent intent = new Intent(this, StatisticsActivity.class);
+            startActivity(intent);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
